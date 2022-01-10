@@ -32,7 +32,9 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-  throw new Error('Not implemented');
+  const regexp = /\w{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\}/i;
+
+  return regexp;
 }
 
 
@@ -54,6 +56,8 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
+  /* const reg = new RegExp(/p\.t/i);
+  return reg; */
   throw new Error('Not implemented');
 }
 
