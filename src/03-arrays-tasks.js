@@ -185,8 +185,8 @@ function getHead(arr, n) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
  */
 function getTail(arr, n) {
-  // надо мутировать текущий массив, а слайс делает копию текущего..из комментов
-  return arr.slice(0, -n);
+  const res = arr.splice(arr.length - n, arr.length - 1);
+  return res;
 }
 
 
@@ -210,8 +210,9 @@ function getTail(arr, n) {
  *    +'20,21,22,23,24\n'
  *    +'30,31,32,33,34'
  */
-function toCsvText(/* arr */) {
-  throw new Error('Not implemented');
+function toCsvText(arr) {
+  const total = arr.reduce((sum, current) => `${sum}${'\n'}${current.join(',')}`);
+  return total;
 }
 
 /**
@@ -324,7 +325,7 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-  const res = arr.reduce((sum, current) => sum + (current > 0), 0); // в песочнице проходит
+  const res = arr.reduce((sum, current) => sum + (current > 0 && typeof current === 'number'), 0);
   return res;
 }
 
@@ -440,9 +441,8 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented'); // в песочнице проходит. Здесь пишет Expected to return a value at the end of arrow function  array-callback-return
-  /* arr.sort((a, b) => {
+function sortCitiesArray(arr) {
+  arr.sort((a, b) => {
     if (a.country > b.country) {
       return 1;
     }
@@ -458,9 +458,9 @@ function sortCitiesArray(/* arr */) {
       }
       return 0;
     }
+    return true;
   });
-
-  return arr; */
+  return arr;
 }
 
 /**
