@@ -203,12 +203,10 @@ function partialUsingArguments(/* fn, ...args1 */) {
  */
 function getIdGeneratorFunction(startFrom) {
   let res = startFrom;
-
   function final() {
     res += 1;
-    return res; // res++
+    return res;
   }
-
   return final;
 }
 
